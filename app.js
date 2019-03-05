@@ -21,7 +21,7 @@ app.set('views',path.join(__dirname,'views'));
 
 // bodyParser
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extend:false}));
+app.use(bodyParser.urlencoded({extend:true}));
 
 // Results
 var pages =
@@ -53,18 +53,14 @@ app.get("/",function(req,res){
 
   });
 });
-app.post("/Q",function(req,res){
+app.post("/search",function(req,res){
   //res.send("homePage yall");
-  var q = req.body.q;
   console.log(req.body);
+  console.log("hello from post");
 
-  });
-});
-
-app.get("/search",function(req,res){
-  //res.send("homePage yall");
 
 });
+
 
 app.listen(3000, function(){
   console.log("server is on port 3000");
