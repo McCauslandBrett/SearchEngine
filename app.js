@@ -55,7 +55,7 @@ app.get("/",function(req,res){
 });
 app.post("/search",function(req,res){
   //res.send("homePage yall");
-  console.log(req.body);
+  console.log(req.body.query);
   console.log("hello from post");
   res.render("s",{
     pages:pages
