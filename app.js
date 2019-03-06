@@ -4,16 +4,22 @@ var path = require('path');
 var app = express();
 var elasticsearch = require('elasticsearch');
 var elasticClient = new elasticsearch.Client({
-  hosts:
-   [
-   'https://rogith:%5Finalproject@127.0.0.1:9200'
-    ]
+  hosts: 'http://rogith:%5Finalproject@127.0.0.1:9200/'
+
 });
 module.exports = elasticClient;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extend: false}));
 
-
+elasticClient.ping({
+  requestTimeout: 30000,
+}, funciton(error){
+  if (error){
+    console.error('elasticsearch is down');
+  } else {
+    console.log('all is well');
+  }
+});
 
 //view engine
 app.set('view engine','ejs');
@@ -24,6 +30,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extend:true}));
 
 // Results
+var hits = [];
 var pages =
   [
     {
@@ -46,6 +53,7 @@ var pages =
 
 // static path
 app.use(express.static(path.join(__dirname,'public')));
+
 app.get("/",function(req,res){
   //res.send("homePage yall");
   res.render("s",{
@@ -56,9 +64,25 @@ app.get("/",function(req,res){
 app.post("/search",function(req,res){
   //res.send("homePage yall");
   console.log(req.body.query);
-  console.log("hello from post");
+  var str = req.body.query;
+  elasticClient.search({
+     index:'movies',
+     type: 'movie',
+     body:{
+       query: {
+         match: {
+           body: str
+         }
+       }
+    }
+}).then(function (resp) {
+   hits = resp.hits.hits;
+}, function (err) {
+    console.trace(err.message);
+});
+  console.log("searched");
   res.render("s",{
-    pages:pages
+    pages:hits
 
   });
 
