@@ -65,7 +65,7 @@ app.post("/search",function(req,res){
   //res.send("homePage yall");
   console.log(req.body.query);
   var str = req.body.query;
-  elasticClient.search({
+  var results = elasticClient.search({
      index:'movies',
      type: 'movie',
      body:{
@@ -81,6 +81,8 @@ app.post("/search",function(req,res){
     console.trace(err.message);
 });
   console.log("searched");
+  console.log(results);
+  console.log(hits);
   res.render("s",{
     pages:hits
 
