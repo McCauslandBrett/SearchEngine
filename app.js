@@ -76,6 +76,7 @@ app.post("/search",function(req,res){
          }
        }
     }
+  };
   results = elasticClient.search(query)
 }).then(function (resp) {
    hits = resp.hits.hits;
