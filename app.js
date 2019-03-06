@@ -6,7 +6,7 @@ var elasticsearch = require('elasticsearch');
 var elasticClient = new elasticsearch.Client({
   hosts:
    [
-   'https://[username]:[password]@[server]:[9200]/'
+   'https://rogith:%5Finalproject@127.0.0.1:9200'
     ]
 });
 module.exports = elasticClient;
