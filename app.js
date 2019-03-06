@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({extend: false}));
 
 elasticClient.ping({
   requestTimeout: 30000,
-}, funciton(error){
+}, function(error){
   if (error){
     console.error('elasticsearch is down');
   } else {
@@ -31,6 +31,7 @@ app.use(bodyParser.urlencoded({extend:true}));
 
 // Results
 var hits = [];
+var results = [];
 var pages =
   [
     {
@@ -57,7 +58,7 @@ app.use(express.static(path.join(__dirname,'public')));
 app.get("/",function(req,res){
   //res.send("homePage yall");
   res.render("s",{
-    pages:pages
+    pages:results
 
   });
 });
@@ -65,7 +66,7 @@ app.post("/search",function(req,res){
   //res.send("homePage yall");
   console.log(req.body.query);
   var str = req.body.query;
-  elasticClient.search({
+  var query= {
      index:'movies',
      type: 'movie',
      body:{
@@ -75,14 +76,14 @@ app.post("/search",function(req,res){
          }
        }
     }
+  results = elasticClient.search(query)
 }).then(function (resp) {
    hits = resp.hits.hits;
 }, function (err) {
     console.trace(err.message);
 });
-  console.log("searched");
   res.render("s",{
-    pages:hits
+    pages:results
 
   });
 
