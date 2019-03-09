@@ -74,6 +74,7 @@ app.post("/search",function(req,res){
        }}}).then(function (resp) {
          console.log(resp);
    hits = resp.hits.hits;
+   console.log(hits);
   }, function (err) {
     console.trace(err.message);
   });
@@ -84,8 +85,8 @@ app.post("/search",function(req,res){
 
 
   console.log("searched");
-  console.log(results);
-  console.log(hits);
+ //console.log(results);
+ //console.log(hits);
   res.render("s",{
     pages:hits
 
