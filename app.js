@@ -3,10 +3,10 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var app = express();
 var elasticsearch = require('elasticsearch');
-var elasticClient = new elasticsearch.Client({
-  hosts: 'http://rogith:%5Finalproject@127.0.0.1:9200/'
+ var elasticClient = new elasticsearch.Client({
+   hosts: 'http://rogith:%5Finalproject@127.0.0.1:9200/'
 
-});
+ });
 module.exports = elasticClient;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extend: false}));
@@ -34,21 +34,30 @@ var hits = [];
 var pages =
   [
     {
-      address:"https://google.com",
-      relevance: 1,
-      title: "Okay",
+      web_title:"title 1",
+      web_url: "http://google.com",
+      body: "Yeah, Yeah < Yeah more",
     },
     {
-      address:"https://yahoo.com",
-      relevance: 1,
-      title: "Go fish",
+      web_title:"title 2",
+      web_url: "http://google.com",
+      body: "Yeah, Yeah < Yeah more",
     },
     {
-      address:"https://bing.com",
-      relevance: 1,
-      title: "Marco",
+      web_title:"title 3",
+      web_url: "http://google.com",
+      body: "Yeah, Yeah < Yeah more",
     }
 ]
+var query = {
+    web_title:'title',
+    web_url: 'url',
+    body:{
+      query: {
+          match: "title"
+             }
+          }
+    }
 
 
 // static path
@@ -56,41 +65,24 @@ app.use(express.static(path.join(__dirname,'public')));
 
 app.get("/",function(req,res){
   //res.send("homePage yall");
-  res.render("s",{
-    pages:pages
 
-  });
+  res.render("s",{ pages:pages });
 });
+
 app.post("/search",function(req,res){
-  //res.send("homePage yall");
+  //testing output
   console.log(req.body.query);
   var str = req.body.query;
-  var results = elasticClient.search( {
-    index:'movies',
-    type: 'movie',
-    body:{
-      query: {
-          match: {"title": str}
-       }}}).then(function (resp) {
-         console.log(resp);
-   hits = resp.hits.hits;
-   console.log(hits);
-  }, function (err) {
-    console.trace(err.message);
-  });
-
-
-
-
-
-
+  query.web_title=str;
+  //res.render("s",{ pages:pages });
+  below is for testing when lucne is properly loaded
+  var results = elasticClient.search(query).then(function (resp){
+      res.render("s",{ pages:resp.hits.hits });
+      console.log(resp.hits.hits);
+     },function (err) {
+         console.trace(err.message);
+      });
   console.log("searched");
- //console.log(results);
- //console.log(hits);
-  res.render("s",{
-    pages:hits
-
-  });
 
 });
 
