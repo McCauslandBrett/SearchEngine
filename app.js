@@ -83,8 +83,9 @@ app.post("/search",function(req,res){
             }
       }
 ).then(function (resp){
-      res.render("s",{ pages:resp.hits.hits });
-     hits = resp.hits.hits;
+      hits = resp.hits.hits;
+      res.render("s",{ pages:hits});
+
      console.log(hits);
      },function (err) {
          console.trace(err.message);
