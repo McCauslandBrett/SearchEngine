@@ -34,18 +34,18 @@ var hits = [];
 var pages =
   [
     {
-      web_title:"title 1",
-      web_url: "http://google.com",
+      title:"title 1",
+      url: "http://google.com",
       body: "Yeah, Yeah < Yeah more",
     },
     {
-      web_title:"title 2",
-      web_url: "http://google.com",
+      title:"title 2",
+      url: "http://google.com",
       body: "Yeah, Yeah < Yeah more",
     },
     {
-      web_title:"title 3",
-      web_url: "http://google.com",
+      title:"title 3",
+      url: "http://google.com",
       body: "Yeah, Yeah < Yeah more",
     }
 ]
