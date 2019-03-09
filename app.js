@@ -34,26 +34,39 @@ var hits = [];
 var pages =
   [
     {
-      id: "1",
-      title:"title 1",
-      url: "http://google.com",
-      level:"1",
-      body: "Yeah, Yeah < Yeah more",
-    },
-    {
-      id: "2",
-      title:"title 2",
-      url: "http://google.com",
-      level:"5",
-      body: "Yeah",
-    },
-    {
-      id: "3",
-      title:"title 3",
-      url: "http://google.com",
-      level:"7",
-      body: "ok",
-    }
+      { _index: 'webdocs',
+        _type: 'webloc',
+        _id: '',
+        _score: 1.172009,
+        _source: {
+             id: '3',
+             title: '\n   Campus Emergency Status: Home\n  ',
+             url: 'http://campusstatus.ucr.edu/\n',
+             level: 2
+            },
+        },
+      { _index: 'webdocs',
+        _type: 'webloc',
+        _id: '',
+        _score: 1.172009,
+        _source: {
+             id: '3',
+             title: '\n   Campus Emergency Status: Home\n  ',
+             url: 'http://campusstatus.ucr.edu/\n',
+             level: 2
+            },
+        },
+        { _index: 'webdocs',
+          _type: 'webloc',
+          _id: '',
+          _score: 1.172009,
+          _source: {
+               id: '3',
+               title: '\n   Campus Emergency Status: Home\n  ',
+               url: 'http://campusstatus.ucr.edu/\n',
+               level: 2
+              },
+          }
 ]
 
 
