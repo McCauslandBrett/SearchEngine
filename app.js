@@ -34,32 +34,27 @@ var hits = [];
 var pages =
   [
     {
-      _title:"title 1",
-      _url: "http://google.com",
-      _body: "Yeah, Yeah < Yeah more",
+      id: "1",
+      title:"title 1",
+      url: "http://google.com",
+      level:"1",
+      body: "Yeah, Yeah < Yeah more",
     },
     {
+      id: "2",
       title:"title 2",
       url: "http://google.com",
-      body: "Yeah, Yeah < Yeah more",
+      level:"5",
+      body: "Yeah",
     },
     {
+      id: "3",
       title:"title 3",
       url: "http://google.com",
-      body: "Yeah, Yeah < Yeah more",
+      level:"7",
+      body: "ok",
     }
 ]
-
-// var str = "";
-// var query = {
-//     index: 'webdocs',
-//     type: 'webloc',
-//     body:{
-//       query: {
-//           match: {"title": str}
-//              }
-//           }
-//     }
 
 
 // static path

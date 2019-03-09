@@ -32,11 +32,10 @@
   <div class= "card-deck">
     <div class="card" style="width: 18rem;">
     <div class="card-body">
-      <h5 class="card-title"><%= page._title %></h5>
-      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-      <p class="card-text"><%= page._body%></p>
-      <a href="<%= page.url%>" class="card-link">Visit</a>
-      <a href="#" class="card-link">Another link</a>
+      <h5 class="card-title"><%= page.title %></h5>
+      <h6 class="card-subtitle mb-2 text-muted"><%= page.id %></h6>
+      <p class="card-text"><%= page.body%></p>
+      <a href="<%= page._url%>" class="card-link">Visit</a>
     </div>
   </div>
   </div>
