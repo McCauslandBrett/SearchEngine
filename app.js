@@ -50,16 +50,16 @@ var pages =
     }
 ]
 
-var str = "";
-var query = {
-    index: 'webdocs',
-    type: 'webloc',
-    body:{
-      query: {
-          match: {"title": str}
-             }
-          }
-    }
+// var str = "";
+// var query = {
+//     index: 'webdocs',
+//     type: 'webloc',
+//     body:{
+//       query: {
+//           match: {"title": str}
+//              }
+//           }
+//     }
 
 
 // static path
@@ -74,13 +74,22 @@ app.get("/",function(req,res){
 app.post("/search",function(req,res){
   //testing output
   console.log(req.body.query);
-  str = req.body.query;
+  var str = req.body.query;
   //query.web_title=str;
   //res.render("s",{ pages:pages });
   //below is for testing when lucne is properly loaded
-  var results = elasticClient.search(query).then(function (resp){
+  var results = elasticClient.search({
+      index: 'webdocs',
+      type: 'webloc',
+      body:{
+        query: {
+            match: {"title": str}
+               }
+            }
+      }
+).then(function (resp){
       res.render("s",{ pages:resp.hits.hits });
-     hits = resp.hits.hits; 
+     hits = resp.hits.hits;
      console.log(hits);
      },function (err) {
          console.trace(err.message);
