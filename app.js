@@ -34,9 +34,9 @@ var hits = [];
 var pages =
   [
     {
-      title:"title 1",
-      url: "http://google.com",
-      body: "Yeah, Yeah < Yeah more",
+      _title:"title 1",
+      _url: "http://google.com",
+      _body: "Yeah, Yeah < Yeah more",
     },
     {
       title:"title 2",
