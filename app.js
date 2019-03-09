@@ -65,21 +65,24 @@ app.post("/search",function(req,res){
   //res.send("homePage yall");
   console.log(req.body.query);
   var str = req.body.query;
-  var results = elasticClient.search({
-     index:'movies',
-     type: 'movie',
-     body:{
-       query: {
-         match: {
-           body: str
-         }
-       }
-    }
-}).then(function (resp) {
+  var results = elasticClient.search( {
+    index:'movies',
+    type: 'movie',
+    body:{
+      query: {
+          match: {"title": str}
+       }}}).then(function (resp) {
+         console.log(resp);
    hits = resp.hits.hits;
-}, function (err) {
+  }, function (err) {
     console.trace(err.message);
-});
+  });
+
+
+
+
+
+
   console.log("searched");
   console.log(results);
   console.log(hits);
