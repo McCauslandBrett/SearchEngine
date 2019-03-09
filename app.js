@@ -97,35 +97,13 @@ app.post("/search",function(req,res){
 ).then(function (resp){
       hits = resp.hits.hits;
 
-      //res.render("s",{ pages:hits});
+      res.render("s",{ pages:hits});
 
      console.log(hits);
      },function (err) {
          console.trace(err.message);
       });
 
-    if( hits.length == 0){
-      elasticClient.search({
-          index: 'webdocs',
-          type: 'webloc',
-          body:{
-            query: {
-                match: {"body": str}
-                   }
-                }
-          }
-    ).then(function (resp){
-          hits = resp.hits.hits;
-
-          //res.render("s",{ pages:hits});
-
-         console.log(hits);
-         },function (err) {
-             console.trace(err.message);
-          });
-
-    }
-    res.render("s",{ pages:hits});
   console.log("searched");
 
 });
