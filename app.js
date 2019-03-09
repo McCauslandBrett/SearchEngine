@@ -9,7 +9,7 @@ var elasticsearch = require('elasticsearch');
  });
 module.exports = elasticClient;
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extend: false}));
+app.use(bodyParser.urlencoded({extend: true}));
 
 elasticClient.ping({
   requestTimeout: 30000,
