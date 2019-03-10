@@ -87,7 +87,7 @@ app.post("/search",function(req,res){
   //below is for testing when lucne is properly loaded
   elasticClient.search({
       index: 'webdocs',
-      type: 'webloc',
+      type: 'webdoc',
       body:{
         query: {
             match: {"title": str}
