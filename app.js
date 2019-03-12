@@ -91,10 +91,15 @@ app.post("/search",function(req,res){
       body:{
         query: {
             match: {"title": str}
-               }
+        },
+        highlight: {
+            fields: {
+                title: {}
             }
+        }
       }
-).then(function (resp){
+
+  }).then(function (resp){
       hits = resp.hits.hits;
 
       res.render("s",{ pages:hits});

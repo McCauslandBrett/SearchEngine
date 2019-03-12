@@ -33,7 +33,8 @@
     <div class="card" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title"><%= page._source.title %></h5>
-      <p class="card-text"><%= page._source.body%></p>
+      <p class="card-text"><%= page._source.body%></p> 
+      <p class="card-text"><%= page.highlight.title%></p>
       <a href="<%= page._source.url%>" class="card-link">Visit</a>
     </div>
   </div>
