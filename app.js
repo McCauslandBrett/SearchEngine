@@ -1,3 +1,5 @@
+
+
 var express = require("express");
 var bodyParser = require('body-parser');
 var path = require('path');
@@ -31,42 +33,7 @@ app.use(bodyParser.urlencoded({extend:true}));
 
 // Results
 var hits = [];
-var pages =
-  [
-      // { _index: 'webdocs',
-      //   _type: 'webloc',
-      //   _id: '',
-      //   _score: 1.172009,
-      //   _source: {
-      //        id: '3',
-      //        title: '\n   Campus Emergency Status: Home\n  ',
-      //        url: 'http://campusstatus.ucr.edu/\n',
-      //        level: 2
-      //       },
-      //   },
-      // { _index: 'webdocs',
-      //   _type: 'webloc',
-      //   _id: '',
-      //   _score: 1.172009,
-      //   _source: {
-      //        id: '3',
-      //        title: '\n   Campus Emergency Status: Home\n  ',
-      //        url: 'http://campusstatus.ucr.edu/\n',
-      //        level: 2
-      //       },
-      //   },
-      //   { _index: 'webdocs',
-      //     _type: 'webloc',
-      //     _id: '',
-      //     _score: 1.172009,
-      //     _source: {
-      //          id: '3',
-      //          title: '\n   Campus Emergency Status: Home\n  ',
-      //          url: 'http://campusstatus.ucr.edu/\n',
-      //          level: 2
-      //         },
-      //     }
-]
+var pages = [];
 
 
 // static path

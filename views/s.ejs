@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <script src="https://d3js.org/d3.v5.min.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="app.js"></script>
@@ -34,7 +35,7 @@
     <div class="card-body">
       <h5 class="card-title"><%= page._source.title %></h5>
       <p class="card-text"><%= page._source.body%></p> 
-      <p class="card-text"><%= page.highlight.title%></p>
+      <p class="card-text"><%= page.highlight.title[0]%></p>
       <a href="<%= page._source.url%>" class="card-link">Visit</a>
     </div>
   </div>
