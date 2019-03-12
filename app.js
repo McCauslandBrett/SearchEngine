@@ -61,6 +61,7 @@ app.post("/search",function(req,res){
         },
         highlight: {
             fields: {
+                
                 title: {}
             }
         }
